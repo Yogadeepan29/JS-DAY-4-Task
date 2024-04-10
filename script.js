@@ -20,8 +20,9 @@ console.log("Printed odd numbers using anonymous function : ",a([1, 2, 3, 4, 5, 
 
 // using IIFE function
 
-var result1 = [];
+
 (function (arr) {
+  var result1 = [];
   for (var i = 0; i < arr.length; i++) {
     if (arr[i] % 2 !== 0) {
       result1.push(arr[i]);
@@ -46,15 +47,14 @@ console.log("Title caps in strings using anonymous function : ",string(["helLo t
 
 // using IIFE function
 
-var string1 = (function (arr) {
+(function (arr) {
   var res = arr.toString();
   var data = res.toLowerCase().split(" ");
   for (var i = 0; i < data.length; i++) {
     data[i] = data[i].charAt(0).toUpperCase() + data[i].slice(1);
   }
-  return data.join(" ");
-});
-console.log("Title caps in strings using IIFE function : ",string1(["helLo tHIs IS deePAn"]));
+  console.log("Title caps in strings using IIFE function : ",data.join(" "));
+})(["helLo tHIs IS deePAn"]);
 
 //! c. Sum of all numbers in an array
 
@@ -72,15 +72,13 @@ console.log("sum of all numbers in array using anonymous function",sum);
 
 // using IIFE function
 
-var arrsum1 = [6, 7, 8, 9, 10];
-var sum1 = (function (arrsum1) {
+(function (arr) {
   var total = 0;
-  for (let i = 0; i < arrsum1.length; i++) {
-    total += arrsum1[i];
+  for (let i = 0; i < arr.length; i++) {
+    total += arr[i];
   }
-  return total;
-})(arrsum1);
-console.log("sum of all numbers in array using IIFE function",sum1);
+  console.log("sum of all numbers in array using IIFE function : ",total);
+})([6, 7, 8, 9, 10]);
 
 //! d. Return all the prime numbers in an array
 
@@ -110,10 +108,9 @@ console.log("Return all prime numbers in an array using anonymous function : ",p
 
 // using IIFE function
 
-var arrprime1 = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
-var primeNumbers1 = (function (arrprime1) {
+(function (arr) {
   var primes = [];
-  for (var num of arrprime1) {
+  for (var num of arr) {
     var isPrime = true;
     if (num === 1) {
       isPrime = false;
@@ -128,9 +125,9 @@ var primeNumbers1 = (function (arrprime1) {
       primes.push(num);
     }
   }
-  return primes;
-})(arrprime1);
-console.log("Return all prime numbers in an array using IFFE function : ",primeNumbers1);
+  console.log("Return all prime numbers in an array using IIFE function : ",primes);
+})([11, 12, 13, 14, 15, 16, 17, 18, 19, 20]);
+
 
 //! e. Return all the palindromes in an array
 
@@ -168,11 +165,11 @@ var arrm1 = [1, 3, 5, 7];
 var arrm2 = [2, 4, 6, 8];
 var med = function (arrm1, arrm2) {
   let arr = [...arrm1, ...arrm2];
-  console.log("concatenate both array :", arr);
+  //console.log("concatenate both array :", arr);
   arr.sort((a, b) => a - b);
-  console.log("sorted array :", arr);
+ // console.log("sorted array :", arr);
   let n = arr.length;
-  console.log("array length :", n);
+ // console.log("array length :", n);
   if (n % 2 === 0) {
     return (arr[n / 2] + arr[n - 1] / 2) / 2;
   } else {
@@ -183,22 +180,24 @@ console.log("median using anonymous function: ", med(arrm1, arrm2));
 
 // using IIFE function
 
-var arrm3 = [10, 12, 14, 16];
-var arrm4 = [11, 13, 15, 17];
-var med1 = (function (arrm3, arrm4) {
+(function () {
+  let arrm3 = [10, 12, 14, 16];
+  let arrm4 = [11, 13, 15, 17];
   let arr = [...arrm3, ...arrm4];
-  console.log("concatenate both array :", arr);
+  //console.log("concatenated array :", arr);
   arr.sort((a, b) => a - b);
-  console.log("sorted array :", arr);
+  //console.log("sorted array :", arr);
   let n = arr.length;
-  console.log("array length :", n);
+  //console.log("array length :", n);
   if (n % 2 === 0) {
-    return (arr[n / 2] + arr[n - 1] / 2) / 2;
+    console.log(
+      "median using IIFE function : ",
+      (arr[n / 2] + arr[n - 1] / 2) / 2
+    );
   } else {
-    return arr[Math.floor(n / 2)];
+    console.log("median using IIFE function : ", arr[Math.floor(n / 2)]);
   }
-});
-console.log("median using IFFE function : ", med1(arrm3, arrm4));
+})();
 
 //! g. Remove duplicates from an array
 
@@ -218,17 +217,15 @@ console.log("Remove duplicates using anonymous function : ",duplicates);
 
 // using IIFE function
 
-var arrdup1 = [8, 7, 5, 4, 5, 8, 1, 1, 6, 2, 8, 5];
-var duplicates1 = (function (arrdup1) {
+(function (arrdup1) {
   var result = [];
-  for (let i = 0; i < arrdup1.length; i++) {
+  for (var i = 0; i < arrdup1.length; i++) {
     if (result.indexOf(arrdup1[i]) === -1) {
       result.push(arrdup1[i]);
     }
   }
-  return result;
-})(arrdup1);
-console.log("Remove duplicates using IIFE function : ",duplicates1);
+  console.log("Remove duplicates using IIFE function : ",result);
+})([8, 7, 5, 4, 5, 8, 1, 1, 6, 2, 8, 5]);
 
 //! h. Rotate an array by k times
 
@@ -250,18 +247,15 @@ console.log("Rotate an array k times using anonymous function : ",rotarr);
 
 // using IIFE function
 
-var arrr2 = [6, 1, 2, 3, 4, 5];
-var k = 1;
-var rotarr1 = (function (arrr2, k) {
+(function (arr, k) {
   for (var i = 0; i < k; i++) {
-    arrr2.push(arrr2[i]);
+    arr.push(arr[i]);
   }
   for (var j = 0; j < k; j++) {
-    arrr2.shift();
+    arr.shift();
   }
-  return arrr2;
-})(arrr2, k);
-console.log("Rotate an array k times using IIFE function : ",rotarr1);
+  console.log("Rotate an array k times using IIFE function : ",arr);
+   })([6, 1, 2, 3, 4, 5], 1);
 
 console.log("");
 console.log("                       TASK-2                               ");
