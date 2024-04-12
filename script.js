@@ -232,7 +232,7 @@ console.log("Remove duplicates using anonymous function : ",duplicates);
 // using anonymous function
 
 var arrr1 = [1, 2, 3, 4, 5, 6];
-var k = 3;
+var k = 6;
 var rotarr = function (arrr1, k) {
   for (var i = 0; i < k; i++) {
     arrr1.push(arrr1[i]);
@@ -255,7 +255,7 @@ console.log("Rotate an array k times using anonymous function : ",rotarr);
     arr.shift();
   }
   console.log("Rotate an array k times using IIFE function : ",arr);
-   })([6, 1, 2, 3, 4, 5], 1);
+   })([6, 1, 2, 3, 4, 5], 6);
 
 console.log("");
 console.log("                       TASK-2                               ");
